@@ -1,32 +1,27 @@
+
 /* =========================
    TAMPILAN DASAR
 ========================= */
-
 body {
-    background:skyblue;
+    background: skyblue;
     font-family: Arial, sans-serif;
     color: #333333;
     margin: 0;
     padding: 0;
 }
 
-
-/* =========================
-   KOTAK UTAMA CV
-========================= */
-
 .container {
     width: 85%;
+    max-width: 1100px;
     margin: 30px auto;
     padding: 35px;
     background-color: white;
+    box-sizing: border-box;
 }
-
 
 /* =========================
    JUDUL
 ========================= */
-
 h1 {
     color: #e889a5;
     text-align: center;
@@ -49,81 +44,141 @@ p {
     text-align: justify;
 }
 
+hr {
+    border: 0;
+    border-top: 1px solid #eeeeee;
+    margin: 25px 0;
+}
 
 /* =========================
-   IDENTITAS
+   FOTO DAN IDENTITAS
 ========================= */
-
 .identitas {
-    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    gap: 30px;
+    margin: 25px 0;
 }
 
-.kolom-foto {
-    vertical-align: top;
-    padding-right: 30px;
-}
-
-.kolom-identitas {
-    vertical-align: top;
+.foto {
+    flex: 0 0 160px;
+    text-align: center;
 }
 
 .foto-profil {
     width: 142px;
+    max-width: 100%;
+    height: auto;
     border: 4px solid #e889a5;
     padding: 5px;
     border-radius: 10px;
+    box-sizing: border-box;
 }
 
-.data-identitas {
-    padding: 5px;
+.data-diri {
+    flex: 1;
+    min-width: 0;
 }
 
+.data-diri h2 {
+    margin-top: 0;
+}
+
+.tabel-identitas {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.tabel-identitas td {
+    padding: 7px 5px;
+    vertical-align: top;
+    overflow-wrap: anywhere;
+}
+
+.tabel-identitas td:first-child {
+    width: 175px;
+}
+
+.tabel-identitas td:nth-child(2) {
+    width: 15px;
+}
 
 /* =========================
    LIST
 ========================= */
-
 ul,
 ol {
     line-height: 1.8;
+    padding-left: 25px;
 }
 
 li {
     margin-bottom: 5px;
 }
 
+/* =========================
+   KARTU INFORMASI
+========================= */
+.grid-informasi {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background-color: #f4dce5;
+    padding: 20px;
+    border: 1px solid #e8bdcc;
+    border-radius: 10px;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.card h2 {
+    margin-top: 5px;
+}
 
 /* =========================
-   TABEL
+   TABEL MATA KULIAH
 ========================= */
-
-.tabel-Mata-kuliah {
-    border-collapse: collapse;
+.tabel-wrapper {
     width: 100%;
+    overflow-x: auto;
     margin-top: 15px;
     margin-bottom: 20px;
 }
 
-.tabel-Mata-kuliah th {
-    background-color: #e889a5;
-    color: white;
-    padding: 10px;
+.tabel-mata-kuliah {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 400px;
 }
 
-.tabel-Mata-kuliah td {
+.tabel-mata-kuliah th {
+    background-color: #e889a5;
+    color: white;
+    padding: 12px;
+}
+
+.tabel-mata-kuliah td {
     padding: 10px;
     border: 1px solid #dddddd;
 }
 
-.tabel-Mata-kuliah tr:nth-child(even) {
+.tabel-mata-kuliah tr:nth-child(even) {
     background-color: #fff4f7;
 }
 
+.tabel-mata-kuliah th,
+.tabel-mata-kuliah td {
+    text-align: left;
+}
 
 /* =========================
    LINK
 ========================= */
-
 a {
     color: #d65f83;
     text-decoration: none;
@@ -134,17 +189,16 @@ a:hover {
     text-decoration: underline;
 }
 
-
 /* =========================
    FORM KONTAK
 ========================= */
-
 form {
     background-color: #fff7fa;
     padding: 25px;
     margin-top: 20px;
     border: 1px solid #f1c6d2;
     border-radius: 12px;
+    box-sizing: border-box;
 }
 
 .form-group {
@@ -162,10 +216,12 @@ label {
 .form-group input,
 .form-group select,
 .form-group textarea {
+    display: block;
     width: 100%;
     box-sizing: border-box;
     padding: 12px;
     font-size: 16px;
+    font-family: Arial, sans-serif;
     border: 1px solid #e2b7c4;
     border-radius: 8px;
     background-color: white;
@@ -176,120 +232,140 @@ label {
 .form-group select:focus,
 .form-group textarea:focus {
     border: 2px solid #e889a5;
-   
 }
 
 textarea {
     resize: vertical;
 }
 
-
 /* =========================
    TOMBOL
 ========================= */
+.tombol {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
 
 button {
     background-color: #e889a5;
     color: white;
-    padding: 11px 22px;
+    padding: 12px 22px;
     border: none;
     border-radius: 8px;
-    margin-right: 10px;
     cursor: pointer;
     font-size: 15px;
+    font-weight: bold;
 }
 
 button:hover {
     background-color: #c96886;
 }
 
+.tombol-reset {
+    background-color: #888888;
+}
+
+.tombol-reset:hover {
+    background-color: #666666;
+}
 
 /* =========================
    FOOTER
 ========================= */
-
 .footer {
     text-align: center;
     color: #888888;
     margin-top: 30px;
+    border-top: 1px solid #eeeeee;
+    padding-top: 15px;
 }
-.grid-informasi {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-.card {
-    background-color: cadetblue;
-    padding: 20px;
-    border: 1px solid #dddddd;
-}
-/*=================================*/
-/*RESPONSIF TABLE DAN HP*/
-/*=================================*/
 
+.footer p {
+    text-align: center;
+    font-size: 13px;
+}
+
+/* =========================
+   RESPONSIF TABLET DAN HP
+========================= */
 @media (max-width: 768px) {
-    /*CONTAINER*/
     .container {
         width: 94%;
         margin: 10px auto;
-        padding: 15px;
+        padding: 18px;
     }
-    /*HEADING*/
-    h1 {font-size: 24px;}
-    h2 {font-size: 19px;}
-    p {font-size: 14px;line-height: 1.6;}
 
-    /*FOTO DAN IDENTITAS*/
-    .identitas > tbody > tr {
-        display: flex;
+    h1 {
+        font-size: 25px;
+        letter-spacing: 1px;
+    }
+
+    h2 {
+        font-size: 19px;
+    }
+
+    p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+    .identitas {
         flex-direction: column;
-    }
-    .kolom-foto {
-        width: 100;
-        padding-right: 0;
-        text-align: center;
-        margin-bottom: 20px;
+        align-items: center;
+        gap: 20px;
     }
 
-    .kolom-identitas {
+    .foto {
+        flex: auto;
         width: 100%;
-        padding-right: 0;
     }
 
-    .kolom-identitas h2 {
-        margin-top: 0;
-        text-align: center;
-    }
     .foto-profil {
         width: 130px;
     }
-    /*DATA IDENTITAS*/
-    .data-identitas td {
-        padding: 4px 2px;
-        font-size: 13px;
-        vertical-align: top;
+
+    .data-diri {
+        width: 100%;
     }
-    /*GRID INFORMASI*/
+
+    .data-diri h2 {
+        text-align: center;
+    }
+
+    .tabel-identitas td {
+        padding: 6px 3px;
+        font-size: 13px;
+    }
+
+    .tabel-identitas td:first-child {
+        width: 42%;
+    }
+
     .grid-informasi {
         grid-template-columns: 1fr;
         gap: 15px;
     }
+
     .card {
-        width: 100%;
         padding: 15px;
     }
-    .tabel-Mata-kuliah {font-size: 12px}
-    form {padding: 15px}
 
-    input
-    select
-    textarea {font-size: 14px}
+    form {
+        padding: 15px;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        font-size: 14px;
+    }
+
+    .tombol {
+        flex-direction: column;
+    }
 
     button {
         width: 100%;
-        margin-right: 0;
-        margin-bottom: 10px;
     }
 }
