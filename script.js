@@ -1,18 +1,28 @@
-const form = document.getElementById('formkontak');
-form.addEventListener("submit", function (event) {
 
-	// mencegah form berpindah ke halaman lain
-	 event.preventDefault();
-	//========NOMOR WHATSAPP TUJUAN============
-	const nomorWhatsApp = "6287857176475";
-	//========MENGAMBIL DATA DARI FORM============
-	const nama = document.getElementById("nama").value;
-    const email = document.getElementById("email").value;
-    const telepon = document.getElementById("telepon").value;
-    const minat = document.getElementById("minat").value;
-    const pesan = document.getElementById("pesan").value;
-	
-const isiPesan = `Halo, saya menghubungi melalui website CV.
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("formkontak");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Nomor WhatsApp tujuan
+        const nomorWhatsApp = "6287857176475";
+
+        // Mengambil data formulir
+        const nama = document.getElementById("nama").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const telepon = document.getElementById("telepon").value.trim();
+        const minat = document.getElementById("minat").value;
+        const pesan = document.getElementById("pesan").value.trim();
+
+        // Memeriksa kelengkapan formulir
+        if (!nama || !email || !telepon || !minat || !pesan) {
+            alert("Silakan isi semua formulir terlebih dahulu!");
+            return;
+        }
+
+        // Menyusun pesan WhatsApp
+        const isiPesan = `Halo, saya menghubungi melalui website CV.
 
 Nama Lengkap : ${nama}
 Email        : ${email}
@@ -20,15 +30,19 @@ No. Telepon  : ${telepon}
 Bidang Minat : ${minat}
 Pesan        : ${pesan}`;
 
-//========MENGUBAH PESAN MENJADI FORMAT URL============
- const pesanEncoded = encodeURIComponent(isiPesan);
+        // Mengubah pesan menjadi format URL
+        const pesanEncoded = encodeURIComponent(isiPesan);
 
-//========MEMBUAT LINK WHATSAPP============
-	const urlWhatsApp =
-         `https://wa.me/${nomorWhatsApp}?text=${pesanEncoded}`;
+        // Membuat tautan WhatsApp
+        const urlWhatsApp =
+            `https://wa.me/${nomorWhatsApp}?text=${pesanEncoded}`;
 
-    // ======== MEMBUKA WHATSAPP ========
-    window.open(urlWhatsApp, "_blank");
+        // Membuka WhatsApp di tab baru
+        const tabWhatsApp = window.open(urlWhatsApp, "_blank");
 
+        // Jika tab baru diblokir browser
+        if (!tabWhatsApp) {
+            window.location.href = urlWhatsApp;
+        }
+    });
 });
-
